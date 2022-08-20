@@ -12,6 +12,7 @@
 
 #include "Harl.hpp"
 
+/* Simple main function to showcase Harl class */
 int main(void)
 {
 	Harl	harl;
