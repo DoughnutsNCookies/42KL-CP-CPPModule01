@@ -6,18 +6,16 @@
 #    By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2022/08/20 11:37:29 by schuah           ###   ########.fr        #
+#    Updated: 2022/08/20 11:36:59 by schuah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	braiiiiiiinnnzzzZ
+NAME		=	harl
 CC			=	c++
 RM			=	rm -f
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS_FILES	=	main \
-				Zombie \
-				newZombie \
-				randomChump
+				Harl
 SRCS		= 	$(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(SRCS_FILES)))
 OBJS		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
 SRCS_DIR	=	srcs/
