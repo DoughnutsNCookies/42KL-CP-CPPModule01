@@ -12,6 +12,9 @@
 
 #include "Harl.hpp"
 
+/* Main function to showcase switch. By finding out which level is needed based
+** on the user input, switch statement will call from that level to the bottom
+** until either the switch loop is broken or called finished */
 int	main(int ac, char **av)
 {
 	static std::string	level_list[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
