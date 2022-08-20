@@ -19,7 +19,7 @@ Weapon::Weapon()
 }
 
 /* Constructor function of the Weapon class */
-Weapon::Weapon(std::string weaponType) : _weaponType(weaponType)
+Weapon::Weapon(std::string weaponType)
 {
 	this->_weaponType = weaponType;
 }
