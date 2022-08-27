@@ -59,4 +59,5 @@ int	main(int ac, char **av)
 		case 4:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
+	return (0);
 }
