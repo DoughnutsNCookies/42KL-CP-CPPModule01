@@ -6,20 +6,13 @@
 /*   By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:49:51 by schuah            #+#    #+#             */
-/*   Updated: 2022/09/14 19:13:41 by schuah           ###   ########.fr       */
+/*   Updated: 2022/09/14 19:16:51 by schuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include <string>
-
-/* Prints error message and exits */
-static int	print_error(std::string error)
-{
-	std::cerr << error << std::endl;
-	return (1);
-}
 
 /* Using a while loop to loop through each line in the file, using find to get
 ** the pos of the found string, erasing the found word and inserts the replace
@@ -34,11 +27,15 @@ static int	replace_text(std::string file_name, std::string find, std::string rep
 	int						stop;
 
 	if (!out_file)
-		return (print_error(file_name + ".replace cannot be created"));
+	{
+		std::cerr << file_name + ".replace cannot be created" << std::endl;
+		return (1);
+	}
 	if (!in_file)
 	{
 		remove((file_name + ".replace").c_str());
-		return (print_error(file_name + " cannot be opened"));
+		std::cerr << file_name + " cannot be opened" << std::endl;
+		return (1);
 	}
 	while (1)
 	{
@@ -66,9 +63,15 @@ int	main(int ac, char **av)
 	std::string		file_name;
 	
 	if (ac != 4)
-		return (print_error("Invalid number of input"));
+	{
+		std::cerr << "Invalid number of input" << std::endl;
+		return (1);
+	}
 	if (av[2][0] == '\0')
-		return (print_error("Input find strings are empty"));
+	{
+		std::cerr << "Input find strings are empty" << std::endl;
+		return (1);
+	}
 	file_name = av[1];
 	return (replace_text(file_name, std::string(av[2]), std::string(av[3])));
 }
