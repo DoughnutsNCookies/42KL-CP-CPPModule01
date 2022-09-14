@@ -6,7 +6,7 @@
 /*   By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:49:51 by schuah            #+#    #+#             */
-/*   Updated: 2022/08/20 11:32:13 by schuah           ###   ########.fr       */
+/*   Updated: 2022/09/14 19:13:41 by schuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,17 @@ static int	print_error(std::string error)
 	return (1);
 }
 
-/* Using a while loop to loop through each line in the file, compares the string
-** and replaces it if it is found with the replacement word and outputs into the
-** output file <filename>.replace */
+/* Using a while loop to loop through each line in the file, using find to get
+** the pos of the found string, erasing the found word and inserts the replace
+** word then it is output into <filename>.replace */
 static int	replace_text(std::string file_name, std::string find, std::string replace)
 {
-	std::ifstream 	in_file(file_name);
-	std::ofstream	out_file(file_name + ".replace");
-	std::string		buf;
-	int				stop;
+	std::ifstream 			in_file(file_name);
+	std::ofstream			out_file(file_name + ".replace");
+	std::string				buf;
+	std::string::size_type	pos;
+	std::string::size_type	start_pos;
+	int						stop;
 
 	if (!out_file)
 		return (print_error(file_name + ".replace cannot be created"));
@@ -40,17 +42,17 @@ static int	replace_text(std::string file_name, std::string find, std::string rep
 	}
 	while (1)
 	{
+		start_pos = 0;
 		stop = getline(in_file, buf).eof();
-		for (int i = 0; i < (int)buf.length(); i++)
+		pos = buf.find(find, start_pos);
+		while (pos != std::string::npos)
 		{
-			if (buf.compare(i, find.length(), find) == 0)
-			{
-				out_file << replace;
-				i += find.length() - 1;
-			}
-			else
-				out_file << buf[i];
+			buf.erase(pos, find.length());
+			buf.insert(pos, replace);
+			start_pos = pos + replace.length();
+			pos = buf.find(find, start_pos);
 		}
+		out_file << buf;
 		if (stop)
 			break;
 		out_file << std::endl;
