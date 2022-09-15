@@ -6,14 +6,14 @@
 #    By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2022/08/19 12:11:49 by schuah           ###   ########.fr        #
+#    Updated: 2022/09/15 12:38:08 by schuah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	brain
-CC			=	c++
+CXX			=	c++
 RM			=	rm -f
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS_FILES	=	main
 SRCS		= 	$(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(SRCS_FILES)))
 OBJS		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
@@ -25,10 +25,10 @@ all:
 				make $(NAME)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
-				$(CC) $(CFLAGS) -c $< -o $@
+				$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME):		$(OBJS)
-				$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+				$(CXX) $(CXXFLAGS) $(SRCS) -o $(NAME)
 
 clean:
 				rm -rf $(OBJS_DIR)
