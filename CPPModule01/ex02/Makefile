@@ -6,14 +6,14 @@
 #    By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2022/09/21 14:23:27 by schuah           ###   ########.fr        #
+#    Updated: 2022/09/29 15:12:29 by schuah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	brain
 CXX			=	c++
 RM			=	rm -f
-CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS_FILES	=	main
 SRCS		= 	$(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(SRCS_FILES)))
 OBJS		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
