@@ -6,13 +6,14 @@
 #    By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2022/09/29 15:12:29 by schuah           ###   ########.fr        #
+#    Updated: 2023/03/01 14:14:02 by schuah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	zombieHorde
 CXX			=	c++
-RM			=	rm -f
+RM			=	rm -rf
+MKDIR		=	mkdir -p
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS_FILES	=	main \
 				Zombie \
@@ -23,7 +24,7 @@ SRCS_DIR	=	srcs/
 OBJS_DIR	=	objs/
 
 all:
-				mkdir -p $(OBJS_DIR)
+				$(MKDIR) $(OBJS_DIR)
 				make $(NAME)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
@@ -33,10 +34,10 @@ $(NAME):		$(OBJS)
 				$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-				rm -rf $(OBJS_DIR)
+				$(RM) $(OBJS_DIR)
 
 fclean:			clean
-				rm -rf $(NAME)
+				$(RM) $(NAME)
 
 re:				fclean all
 
